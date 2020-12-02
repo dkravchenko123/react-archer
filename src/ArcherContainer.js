@@ -18,6 +18,7 @@ type Props = {
   svgContainerStyle?: Object,
   className?: string,
   offset?: number,
+  scale?: number,
 };
 
 type SourceToTargetsArrayType = Array<SourceToTargetType>;
@@ -127,7 +128,7 @@ export class ArcherContainer extends React.Component<Props, State> {
   }
 
   refreshScreen = (): void => {
-    this.setState({ ...this.state });
+    //this.setState({ ...this.state });
   };
 
   storeParent = (ref: ?HTMLElement): void => {
@@ -163,7 +164,11 @@ export class ArcherContainer extends React.Component<Props, State> {
     }
     const absolutePosition = computeCoordinatesFromAnchorPosition(position, rect);
 
-    return absolutePosition.substract(parentCoordinates);
+    const retPos = absolutePosition.substract(parentCoordinates);
+    retPos.x = retPos.x * this.props.scale;
+    retPos.y = retPos.y * this.props.scale;
+
+    return retPos;
   };
 
   registerTransitions = (
