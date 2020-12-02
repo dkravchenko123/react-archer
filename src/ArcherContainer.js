@@ -129,7 +129,7 @@ export class ArcherContainer extends React.Component<Props, State> {
   }
 
   refreshScreen = (): void => {
-    this.setState({ ...this.state });
+    // this.setState({ ...this.state });
   };
 
   storeParent = (ref: ?HTMLElement): void => {
