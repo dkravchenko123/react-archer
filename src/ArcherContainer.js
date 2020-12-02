@@ -111,6 +111,7 @@ export class ArcherContainer extends React.Component<Props, State> {
     strokeColor: '#f00',
     strokeWidth: 2,
     svgContainerStyle: {},
+    scale: 1,
   };
 
   componentDidMount() {
