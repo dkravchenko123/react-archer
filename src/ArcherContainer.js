@@ -19,6 +19,8 @@ type Props = {
   className?: string,
   offset?: number,
   scale?: number,
+  translateX?: number,
+  translateY?: number,
 };
 
 type SourceToTargetsArrayType = Array<SourceToTargetType>;
@@ -112,6 +114,8 @@ export class ArcherContainer extends React.Component<Props, State> {
     strokeWidth: 2,
     svgContainerStyle: {},
     scale: 1,
+    translateX: 0,
+    translateY: 0,
   };
 
   componentDidMount() {
@@ -166,9 +170,9 @@ export class ArcherContainer extends React.Component<Props, State> {
     const absolutePosition = computeCoordinatesFromAnchorPosition(position, rect);
 
     const retPos = absolutePosition.substract(parentCoordinates);
-    console.log(this.props.scale);
-    retPos.x = retPos.x * this.props.scale;
-    retPos.y = retPos.y * this.props.scale;
+
+    retPos.x = (retPos.x + this.props.translateX) * this.props.scale;
+    retPos.y = (retPos.y + this.props.translateY) * this.props.scale;
 
     return retPos;
   };
