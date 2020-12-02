@@ -166,6 +166,7 @@ export class ArcherContainer extends React.Component<Props, State> {
     const absolutePosition = computeCoordinatesFromAnchorPosition(position, rect);
 
     const retPos = absolutePosition.substract(parentCoordinates);
+    console.log(this.props.scale);
     retPos.x = retPos.x / this.props.scale;
     retPos.y = retPos.y / this.props.scale;
 
